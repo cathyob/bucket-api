@@ -9,7 +9,9 @@ const setUser = require('./concerns/set-current-user');
 const setModel = require('./concerns/set-mongoose-model');
 
 const index = (req, res, next) => {
-  Restaurant.find()
+  Restaurant.find({
+    _owner: req.user._id,
+  })
     .then(restaurants => res.json({
       restaurants: restaurants.map((e) =>
         e.toJSON({ virtuals: true, user: req.user })),
