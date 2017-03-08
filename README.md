@@ -2,6 +2,10 @@
 
 This is the documention for the API of FoodBucket, an app that helps you track restraunts you'd like to go to.  It's built using Express JS and Mongo DB.
 
+## Database Structure
+Our database structure diagram:
+![alt text](https://raw.githubusercontent.com/Squad-SOL/bucket-api/readme/ideas_-_12_1024.jpg "ERD")
+
 ## API
 
 Use this as the basis for your own API documentation. Add a new third-level
