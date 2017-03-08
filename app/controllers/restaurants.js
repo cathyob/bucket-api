@@ -10,18 +10,24 @@ const setModel = require('./concerns/set-mongoose-model');
 
 const index = (req, res, next) => {
   Restaurant.find({
-    _owner: req.user._id,
-  })
+      _owner: req.user._id,
+    })
     .then(restaurants => res.json({
       restaurants: restaurants.map((e) =>
-        e.toJSON({ virtuals: true, user: req.user })),
+        e.toJSON({
+          virtuals: true,
+          user: req.user
+        })),
     }))
     .catch(next);
 };
 
 const show = (req, res) => {
   res.json({
-    restaurant: req.restaurant.toJSON({ virtuals: true, user: req.user }),
+    restaurant: req.restaurant.toJSON({
+      virtuals: true,
+      user: req.user
+    }),
   });
 };
 
@@ -32,21 +38,34 @@ const create = (req, res, next) => {
   Restaurant.create(restaurant)
     .then(restaurant =>
       res.status(201)
-        .json({
-          restaurant: restaurant.toJSON({ virtuals: true, user: req.user }),
-        }))
+      .json({
+        restaurant: restaurant.toJSON({
+          virtuals: true,
+          user: req.user
+        }),
+      }))
     .catch(next);
 };
 
 const update = (req, res, next) => {
-  delete req.body._owner;  // disallow owner reassignment.
+  delete req.body._owner; // disallow owner reassignment.
   req.restaurant.update(req.body.restaurant)
     .then(() => res.sendStatus(204))
     .catch(next);
 };
 
 const destroy = (req, res, next) => {
-  req.restaurant.remove()
+  new Promise((resolve, reject) => {
+      if (req.restaurant._owner.toString() === req.user._id.toString()) {
+        resolve(req.restaurant);
+      } else {
+      let error = new Error('Unable to delete - resource is owned by another user (nice try though).');
+      reject(error);
+      }
+    })
+    .then((restaurant) => {
+      restaurant.remove();
+    })
     .then(() => res.sendStatus(204))
     .catch(next);
 };
@@ -57,9 +76,24 @@ module.exports = controller({
   create,
   update,
   destroy,
-}, { before: [
-  { method: setUser, only: ['index', 'show'] },
-  { method: authenticate, except: ['index', 'show'] },
-  { method: setModel(Restaurant), only: ['show'] },
-  { method: setModel(Restaurant, { forUser: true }), only: ['update', 'destroy'] },
-], });
+}, {
+  before: [{
+      method: setUser,
+      only: ['index', 'show']
+    },
+    {
+      method: authenticate,
+      except: ['index', 'show']
+    },
+    {
+      method: setModel(Restaurant),
+      only: ['show']
+    },
+    {
+      method: setModel(Restaurant, {
+        forUser: true
+      }),
+      only: ['update', 'destroy']
+    },
+  ],
+});
