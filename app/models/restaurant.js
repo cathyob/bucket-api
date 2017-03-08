@@ -41,9 +41,9 @@ const restaurantSchema = new mongoose.Schema({
   },
 });
 
-restaurantSchema.virtual('length').get(function length() {
-  return this.text.length;
-});
+// restaurantSchema.virtual('length').get(function length() {
+//   return this.text.length;
+// });
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 
