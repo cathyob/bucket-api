@@ -55,17 +55,7 @@ const update = (req, res, next) => {
 };
 
 const destroy = (req, res, next) => {
-  new Promise((resolve, reject) => {
-      if (req.restaurant._owner.toString() === req.user._id.toString()) {
-        resolve(req.restaurant);
-      } else {
-      let error = new Error('Unable to delete - resource is owned by another user (nice try though).');
-      reject(error);
-      }
-    })
-    .then((restaurant) => {
-      restaurant.remove();
-    })
+  req.restaurant.remove()
     .then(() => res.sendStatus(204))
     .catch(next);
 };
@@ -83,7 +73,7 @@ module.exports = controller({
     },
     {
       method: authenticate,
-      except: ['index', 'show']
+      only: ['index', 'show', 'create', 'update', 'destroy']
     },
     {
       method: setModel(Restaurant),
