@@ -4,6 +4,10 @@ const mongoose = require('mongoose');
 
 const restaurantSchema = new mongoose.Schema({
   // TODO come back and determine if min/max length required for notes TODO //
+  name: {
+    type: String,
+    required: true,
+  },
   notes: {
     type: String,
   },
