@@ -1,10 +1,14 @@
-## FoodBucket API
+# FEEDbucket
+DEPLOYED FRONT END: https://squad-sol.github.io/bucket-browser/
+FRONT END REPO: https://squad-sol.github.io/bucket-browser/
+HEROKU: https://fast-atoll-26007.herokuapp.com/
+Created by @cathyob, @dsweetser, and @newayliu1 for General Assembly Boston Web Development Immersive cohort 016!
 
-This is the documention for the API of FoodBucket, an app that helps you track restaurants you'd like to go to.  The app has been built collaboratively by @cathyob, @dsweetser, and @newayliu1 using Express, Mongoose, and Mongo DB on the backend.  If you have any questions, comments, concerns, or job offers for us feel free to reach out to us!
-
-The deployed front end app can be found here: https://squad-sol.github.io/bucket-browser/
-The deployed backend app can be found here:  https://fast-atoll-26007.herokuapp.com/
-The repo for the front end can be found here: https://github.com/Squad-SOL/bucket-browser
+## ABOUT
+Thank you for visiting our front end repo! This app was built as part of the course's team project.
+We were assigned to a team and given a prompt. Ours was to create a bucket list for people to be able to save, see, edit, and delete items from their list utlizing a location based 3rd party API.
+After getting to know each other we decided to theme our project around a mutual interest - FOOD! Throughout this course we noticed that our class would constantly talk to each other about cool restaurants people should try, for lunch together or otherwise.
+We designed this app with the prompt and our interpretation in mind. A user needs to sign up/in, then they can use the form to fill in information to save restaurants to their bucket list. They can confirm a restaurant exists by searching for it and clicking on its pin. If they do this they can click 'Get from Map' to pre-fill the restaurant's name and address in the form.
 
 ### API Structure
 The MongoDB database has two tables: users and restaurants.  The users table covers authentication and provides user ID for ownership of individual users' wish lists.  The restaurants table takes a name, address, type, and notes fields.  All newly created restaurants have an "achieved" field that defaults to "false", but can be updated to "true" when the restaurant is visited.
