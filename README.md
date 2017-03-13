@@ -1,7 +1,13 @@
 # FEEDbucket
 DEPLOYED FRONT END: https://squad-sol.github.io/bucket-browser/
+
+
 FRONT END REPO: https://squad-sol.github.io/bucket-browser/
+
+
 HEROKU: https://fast-atoll-26007.herokuapp.com/
+
+
 Created by @cathyob, @dsweetser, and @newayliu1 for General Assembly Boston Web Development Immersive cohort 016!
 
 ## ABOUT
