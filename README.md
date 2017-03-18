@@ -1,11 +1,11 @@
 # FEEDbucket
-DEPLOYED FRONT END: https://squad-sol.github.io/bucket-browser/
+DEPLOYED FRONT END: https://cathyob.github.io/bucket-browser/
 
 
-FRONT END REPO: https://squad-sol.github.io/bucket-browser/
+FRONT END REPO: https://github.com/cathyob/bucket-browser
 
 
-HEROKU: https://fast-atoll-26007.herokuapp.com/
+HEROKU: https://feedbucketcathyob.herokuapp.com
 
 
 Created by @cathyob, @dsweetser, and @newayliu1 for General Assembly Boston Web Development Immersive cohort 016!
@@ -36,7 +36,7 @@ The MongoDB database has two tables: users and restaurants.  The users table cov
 Request:
 
 ```sh
-curl --include --request POST https://fast-atoll-26007.herokuapp.com/sign-up \
+curl --include --request POST https://feedbucketcathyob.herokuapp.com/sign-up \
   --header "Content-Type: application/json" \
   --data '{
     "credentials": {
@@ -70,7 +70,7 @@ Content-Type: application/json; charset=utf-8
 Request:
 
 ```sh
-curl --include --request POST https://fast-atoll-26007.herokuapp.com/sign-in \
+curl --include --request POST https://feedbucketcathyob.herokuapp.com/sign-in \
   --header "Content-Type: application/json" \
   --data '{
     "credentials": {
@@ -104,7 +104,7 @@ Content-Type: application/json; charset=utf-8
 Request:
 
 ```sh
-curl --include --request PATCH https://fast-atoll-26007.herokuapp.com/change-password/$ID \
+curl --include --request PATCH https://feedbucketcathyob.herokuapp.com/change-password/$ID \
   --header "Authorization: Token token=$TOKEN" \
   --header "Content-Type: application/json" \
   --data '{
@@ -130,7 +130,7 @@ HTTP/1.1 204 No Content
 Request:
 
 ```sh
-curl --include --request DELETE https://fast-atoll-26007.herokuapp.com/sign-out/$ID \
+curl --include --request DELETE https://feedbucketcathyob.herokuapp.com/sign-out/$ID \
   --header "Authorization: Token token=$TOKEN"
 ```
 
@@ -156,7 +156,7 @@ HTTP/1.1 204 No Content
 Request:
 
 ```sh
-curl --include --request GET https://fast-atoll-26007.herokuapp.com/users \
+curl --include --request GET https://feedbucketcathyob.herokuapp.com/users \
   --header "Authorization: Token token=$TOKEN"
 ```
 
@@ -189,7 +189,7 @@ Content-Type: application/json; charset=utf-8
 Request:
 
 ```sh
-curl --include --request GET https://fast-atoll-26007.herokuapp.com/users/$ID \
+curl --include --request GET https://feedbucketcathyob.herokuapp.com/users/$ID \
   --header "Authorization: Token token=$TOKEN"
 ```
 
@@ -224,7 +224,7 @@ Content-Type: application/json; charset=utf-8
 Returns a list of all the restaurants a user has listed on their wishlist.
 
 ```sh
-curl "https://fast-atoll-26007.herokuapp.com/" --include  --request GET --header "Authorization: Token token=$TOKEN"
+curl "https://feedbucketcathyob.herokuapp.com/" --include  --request GET --header "Authorization: Token token=$TOKEN"
 ```
 
 Response
@@ -268,7 +268,7 @@ Content-Type: application/json; charset=utf-8
 Adds a new restaurant to the DB for the user's wishlist.
 
 ```sh
-curl "https://fast-atoll-26007.herokuapp.com/restaurants" --include --request POST --header "Authorization: Token token=$TOKEN"   --data '{"restaurant": {"name": "'"${NAME}"'","location": "'"${LOCATION}"'","type": "'"${TYPE}"'","notes":"'"${NOTES}"'"}}'
+curl "https://feedbucketcathyob.herokuapp.com/restaurants" --include --request POST --header "Authorization: Token token=$TOKEN"   --data '{"restaurant": {"name": "'"${NAME}"'","location": "'"${LOCATION}"'","type": "'"${TYPE}"'","notes":"'"${NOTES}"'"}}'
 ```
 
 Response
@@ -296,7 +296,7 @@ Content-Type: application/json; charset=utf-8
 Updates a restaurant.  Normally just used to change the status of "achieved" to "true".
 
 ```sh
-curl "https://fast-atoll-26007.herokuapp.com/restaurants/:$ID" --include --request POST --header "Authorization: Token token=$TOKEN"   --data '{"restaurant": {"name": "'"${NAME}"'","location": "'"${LOCATION}"'","type": "'"${TYPE}"'", "achieved": "'"${ACHIEVED}"'"}}'
+curl "https://feedbucketcathyob.herokuapp.com/restaurants/:$ID" --include --request POST --header "Authorization: Token token=$TOKEN"   --data '{"restaurant": {"name": "'"${NAME}"'","location": "'"${LOCATION}"'","type": "'"${TYPE}"'", "achieved": "'"${ACHIEVED}"'"}}'
 ```
 
 Response
@@ -308,7 +308,7 @@ HTTP/1.1 204 No Content
 Removes a restaurant from the user's wish list.
 
 ```sh
-curl "https://fast-atoll-26007.herokuapp.com/restaurants/:$ID" --include --request DELETE --header "Authorization: Token token=${TOKEN}"
+curl "https://feedbucketcathyob.herokuapp.com/restaurants/:$ID" --include --request DELETE --header "Authorization: Token token=${TOKEN}"
 ```
 
 Response
